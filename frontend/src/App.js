@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 
 // Components
@@ -7,7 +8,11 @@ import InProgress from './components/InProgress/InProgress';
 import Completed from './components/Completed/Completed';
 
 class App extends Component {
-
+  state = {
+    newItem: '',
+    items: [{ text: 'Clean Bathroom', stage: 'notStarted', id: 99 }, { text: 'Dust', stage: 'InProgress', id: 98 }, { text: 'Post Office', stage: 'InProgress', id: 94 }],
+    id: 0
+  }
 
   inputChangeHandler = ({ target }) => {
     this.setState({
@@ -69,4 +74,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null)(App);
