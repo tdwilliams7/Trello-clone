@@ -31,6 +31,14 @@ class NotStarted extends Component {
     )
   }
 }
+// NotStarted.defaultProps = {
+//   items: [],
+// }
+//
+const mapStateToProps = state => {
+  return {
+    //items: state.items
+  }
+}
 
-
-export default connect(null, { getItems })(NotStarted);
+export default connect(mapStateToProps, { getItems })(NotStarted);

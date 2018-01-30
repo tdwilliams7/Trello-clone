@@ -12,6 +12,6 @@ export const reducer = (state = initialState, action) => {
     case GETTING_ITEMS:
       return { ...state, gettingItems: true }
     default:
-
+      return state;
   }
 }
