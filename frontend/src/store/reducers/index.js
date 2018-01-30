@@ -1,4 +1,4 @@
-import { GETTING_ITEMS, RECEIVED_ITEMS } from '../actions';
+import { GETTING_ITEMS, RECEIVED_ITEMS, ADDING_ITEM} from '../actions'
 
 const initialState = {
   items: [],

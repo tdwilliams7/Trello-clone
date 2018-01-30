@@ -1,6 +1,7 @@
 import axios from 'axios';
 export const GETTING_ITEMS = 'GETTING_ITEMS';
 export const RECEIVED_ITEMS = 'RECEIVED_ITEMS';
+export const ADDING_ITEM = 'ADDING_ITEM'
 const getUrl = 'http://localhost:3333/items';
 
 export const getItems = () => {

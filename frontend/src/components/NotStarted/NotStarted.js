@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getItems } from '../../store/actions';
+import { getItems } from '../../store/actions'
 
 class NotStarted extends Component {
 
@@ -41,7 +41,7 @@ class NotStarted extends Component {
 //
 const mapStateToProps = state => {
   return {
-    //items: state.items
+    items: state.items
   }
 }
 

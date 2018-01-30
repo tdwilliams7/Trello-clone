@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getItems } from '../../store/actions';
+
 
 class InProgress extends Component {
+
+  componentDidMount() {
+    this.props.getItems();
+  }
 
   render() {
     return (
@@ -16,5 +23,9 @@ class InProgress extends Component {
     )
   }
 }
-
-export default InProgress;
+const mapStateToProps = state => {
+  return {
+    items: state.items,
+  }
+}
+export default connect(mapStateToProps, { getItems })(InProgress);

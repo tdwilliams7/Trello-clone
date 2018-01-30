@@ -66,8 +66,8 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Trello Clone</h1>
         </header>
-        <NotStarted items={this.state.items} newItem={this.state.newItem} inputChangeHandler={this.inputChangeHandler} addItemHandler={this.addItemHandler} markCompletedHandler={this.markCompletedHandler} />
-        <InProgress items={this.state.items} />
+        <NotStarted newItem={this.state.newItem} inputChangeHandler={this.inputChangeHandler} addItemHandler={this.addItemHandler} markCompletedHandler={this.markCompletedHandler} />
+        <InProgress />
         <Completed />
       </div>
     );
