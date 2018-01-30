@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getItems } from '../../store/actions'
+import { getItems, addItem } from '../../store/actions'
 
 class NotStarted extends Component {
   state = {
@@ -20,8 +20,7 @@ class NotStarted extends Component {
   addItemHandler = () => {
     const newItem = { text: this.state.text, stage: 'notStarted', }
     console.log(newItem);
-    // pass to action here.
-    // set id on the server
+    this.props.addItem(newItem);
     this.setState({
       text: '',
     })
@@ -54,14 +53,11 @@ class NotStarted extends Component {
     )
   }
 }
-// NotStarted.defaultProps = {
-//   items: [],
-// }
-//
+
 const mapStateToProps = state => {
   return {
     items: state.items
   }
 }
 
-export default connect(mapStateToProps, { getItems })(NotStarted);
+export default connect(mapStateToProps, { getItems, addItem })(NotStarted);
