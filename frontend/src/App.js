@@ -10,26 +10,8 @@ import Completed from './components/Completed/Completed';
 class App extends Component {
   state = {
     newItem: '',
-    items: [{ text: 'Clean Bathroom', stage: 'notStarted', id: 99 }, { text: 'Dust', stage: 'InProgress', id: 98 }, { text: 'Post Office', stage: 'InProgress', id: 94 }],
-    id: 0
-  }
-
-  inputChangeHandler = ({ target }) => {
-    this.setState({
-      newItem: target.value,
-    })
-  }
-
-  addItemHandler = () => {
-    let items = this.state.items.splice(0);
-    let id = this.state.id;
-    const newItem = { text: this.state.newItem, stage: 'notStarted', id: this.state.id}
-    items = [...items, newItem];
-    this.setState({
-      newItem: '',
-      id: id += 1,
-      items,
-    })
+    // items: [{ text: 'Clean Bathroom', stage: 'notStarted', id: 99 }, { text: 'Dust', stage: 'InProgress', id: 98 }, { text: 'Post Office', stage: 'InProgress', id: 94 }],
+    // id: 0
   }
 
   deleteItemHandler = ({target}) => {
@@ -66,7 +48,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Trello Clone</h1>
         </header>
-        <NotStarted newItem={this.state.newItem} inputChangeHandler={this.inputChangeHandler} addItemHandler={this.addItemHandler} markCompletedHandler={this.markCompletedHandler} />
+        <NotStarted />
         <InProgress />
         <Completed />
       </div>

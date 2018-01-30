@@ -3,9 +3,28 @@ import { connect } from 'react-redux';
 import { getItems } from '../../store/actions'
 
 class NotStarted extends Component {
+  state = {
+    text: '',
+  }
 
   componentDidMount() {
       this.props.getItems();
+  }
+
+  inputChangeHandler = ({target}) => {
+    this.setState({
+      text: target.value,
+    })
+  }
+
+  addItemHandler = () => {
+    const newItem = { text: this.state.text, stage: 'notStarted', }
+    console.log(newItem);
+    // pass to action here.
+    // set id on the server
+    this.setState({
+      text: '',
+    })
   }
 
   render() {
@@ -13,9 +32,9 @@ class NotStarted extends Component {
       <div>
         <h1>Not Started Component</h1>
         <div>
-          <input placeholder='New Thing' onChange={this.props.inputChangeHandler} value={this.props.newItem}
+          <input placeholder='New Thing' onChange={this.inputChangeHandler} value={this.state.text}
             ></input>
-          <button onClick={() => this.props.addItemHandler()}>Add</button>
+          <button onClick={this.addItemHandler}>Add</button>
         </div>
         <div>
           <h3>Things that need work</h3>
@@ -24,8 +43,8 @@ class NotStarted extends Component {
             if (item.stage === 'notStarted') {
               return (<div key={item.id}>
                 <div>{item.text}</div>
-                <button id={item.id} onClick={this.props.deleteItemHandler}>Delete</button>
-                <button id={item.id} onClick={this.props.markCompletedHandler}>In progress</button>
+                <button id={item.id} >Delete</button>
+                <button id={item.id} >In progress</button>
               </div>)
             }
             return;
