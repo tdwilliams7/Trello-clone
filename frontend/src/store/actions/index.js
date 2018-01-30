@@ -1,0 +1,1 @@
+const GETTING_ITEMS = 'GETTING_ITEMS';
