@@ -4,6 +4,10 @@ import { getItems } from '../../store/actions';
 
 class NotStarted extends Component {
 
+  componentDidMount() {
+      this.props.getItems();
+  }
+
   render() {
     return (
       <div>
