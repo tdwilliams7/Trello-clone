@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { addItem } from '../../store/actions';
 
 // components
+import InputModal from '../InputModal/InputModal'
 
 class Input extends Component {
   state = {
@@ -30,11 +31,7 @@ class Input extends Component {
     return (
       <div>
         <h1>Input Component</h1>
-        <form onSubmit={this.addItemHandler}>
-          <input placeholder='New Thing' onChange={this.inputChangeHandler} value={this.state.text}
-            ></input>
-          <button>Add</button>
-        </form>
+        <InputModal />
       </div>
     )
   }

@@ -19,6 +19,7 @@ app.post('/items/post', (req, res) => {
   const item = req.body;
   const newItem = {...item, id};
   items.push(newItem);
+  console.log(items);
   res.send(items);
   id++;
 })

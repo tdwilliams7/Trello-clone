@@ -1,12 +1,19 @@
-import { GETTING_ITEMS, RECEIVED_ITEMS, ADDING_ITEM, ADDED_ITEM, UPDATING_STAGE, UPDATED_STAGE } from '../actions'
+import {
+  GETTING_ITEMS,
+  RECEIVED_ITEMS,
+  ADDING_ITEM,
+  ADDED_ITEM,
+  UPDATING_STAGE,
+  UPDATED_STAGE
+} from "../actions";
 
 const initialState = {
   items: [],
   gettingItems: false,
   receivedItems: false,
   addingItem: false,
-  updatingState: false,
-}
+  updatingState: false
+};
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -17,12 +24,12 @@ export const reducer = (state = initialState, action) => {
     case ADDING_ITEM:
       return { ...state, addingItem: true };
     case ADDED_ITEM:
-      return { ...state, items: action.payload, addingFalse: false, };
+      return { ...state, items: action.payload, addingFalse: false };
     case UPDATING_STAGE:
       return { ...state, updatingState: true };
     case UPDATED_STAGE:
-      return { ...state, items: action.payload, updatingState: false }
+      return { ...state, items: action.payload, updatingState: false };
     default:
       return state;
   }
-}
+};

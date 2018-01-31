@@ -6,8 +6,7 @@ import './App.css';
 import NotStarted from './components/NotStarted/NotStarted';
 import InProgress from './components/InProgress/InProgress';
 import Completed from './components/Completed/Completed';
-import Input from './components/Input/Input'
-import InputModal from './components/InputModal/InputModal';
+import Input from './components/Input/Input';
 
 class App extends Component {
   state = {
@@ -24,7 +23,6 @@ class App extends Component {
         <NotStarted />
         <InProgress />
         <Completed />
-        <InputModal />
       </div>
     );
   }

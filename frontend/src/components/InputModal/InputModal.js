@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+import { addItem } from '../../store/actions';
 
 class InputModal extends Component {
   state = {
@@ -17,6 +19,8 @@ class InputModal extends Component {
 
   onSubmitHandler = event => {
     event.preventDefault();
+    const newItem = this.state;
+    this.props.addItem({...newItem, stage: 'notStarted',});
     this.setState({
       text: "",
       description: "",
@@ -80,4 +84,10 @@ class InputModal extends Component {
   }
 }
 
-export default InputModal;
+const mapStateToProps = state => {
+  return {
+    state,
+  }
+}
+
+export default connect(mapStateToProps, { addItem })(InputModal);
