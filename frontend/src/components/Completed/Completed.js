@@ -5,6 +5,7 @@ import { getItems } from '../../store/actions';
 
 class Completed extends Component {
 
+  // actions/index line 17
   componentDidMount() {
     this.props.getItems();
   }

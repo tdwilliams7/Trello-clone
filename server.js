@@ -9,10 +9,12 @@ let id = 0;
 app.use(bodyParser.json())
 app.use(cors())
 
+// reducers/index line 14
 app.get('/items', (req, res) => {
   res.send(items)
 })
 
+// reducers/index line 27
 app.post('/items/post', (req, res) => {
   const item = req.body;
   items = [...items, { ...item, id }];
@@ -20,6 +22,7 @@ app.post('/items/post', (req, res) => {
   id++;
 })
 
+// reducers/index line 41
 app.put('/items/put', (req, res) => {
   const newItems = req.body.data;
   items = newItems;

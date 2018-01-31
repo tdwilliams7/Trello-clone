@@ -17,6 +17,7 @@ class NotStarted extends Component {
     })
   }
 
+  // actions/index line 31
   addItemHandler = () => {
     const newItem = { text: this.state.text, stage: 'notStarted', }
     console.log(newItem);
@@ -26,6 +27,7 @@ class NotStarted extends Component {
     });
   }
 
+  // actions/index line 41
   advanceStageHandler = ({ target }) => {
     const targetId = Number(target.id);
     let items = this.props.items.slice(0);

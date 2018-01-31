@@ -11,6 +11,9 @@ const getUrl = 'http://localhost:3333/items';
 const postUrl = 'http://localhost:3333/items/post';
 const putUrl = 'http://localhost:3333/items/put';
 
+// components/NotStarted/NotStarted componentDidMount
+// components/InProgress/InProgress componentDidMount
+// components/Completed/Completed componentDidMount
 export const getItems = () => {
   return dispatch => {
     dispatch({ type: GETTING_ITEMS });
@@ -24,6 +27,7 @@ export const getItems = () => {
   }
 }
 
+// components/NotStarted/NotStarted line 21
 export const addItem = (items) => {
   return dispatch => {
     dispatch({ type: ADDING_ITEM });
@@ -38,6 +42,7 @@ export const addItem = (items) => {
   }
 }
 
+// components/NotStarted/NotStarted line 31
 export const changeStage = items => {
   return dispatch => {
     dispatch({ type: UPDATING_STAGE, });
