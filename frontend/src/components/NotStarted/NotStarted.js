@@ -19,7 +19,8 @@ class NotStarted extends Component {
   }
 
   // actions/index line 31
-  addItemHandler = () => {
+  addItemHandler = (event) => {
+    event.preventDefault();
     const newItem = { text: this.state.text, stage: 'notStarted', }
     console.log(newItem);
     this.props.addItem(newItem);
@@ -46,11 +47,11 @@ class NotStarted extends Component {
     return (
       <div>
         <h1>Not Started Component</h1>
-        <div>
+        <form onSubmit={this.addItemHandler}>
           <input placeholder='New Thing' onChange={this.inputChangeHandler} value={this.state.text}
             ></input>
-          <button onClick={this.addItemHandler}>Add</button>
-        </div>
+          <button>Add</button>
+        </form>
         <div>
           <h3>Things that need work</h3>
 
