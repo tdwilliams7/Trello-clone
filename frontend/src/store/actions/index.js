@@ -33,7 +33,6 @@ export const addItem = (items) => {
     dispatch({ type: ADDING_ITEM });
     axios.post(postUrl, items)
     .then(({ data })=> {
-      //console.log('Data from server: ', data)
       dispatch({ type: ADDED_ITEM, payload: data });
     })
     .catch( err => {
