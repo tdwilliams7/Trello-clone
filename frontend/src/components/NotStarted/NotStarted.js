@@ -7,6 +7,7 @@ class NotStarted extends Component {
     text: '',
   }
 
+  // actions/index line 17
   componentDidMount() {
       this.props.getItems();
   }

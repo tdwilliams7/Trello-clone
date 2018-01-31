@@ -45,14 +45,14 @@ export const addItem = (items) => {
 // components/NotStarted/NotStarted line 31
 export const changeStage = items => {
   return dispatch => {
-    dispatch({ type: UPDATING_STAGE, });
-    axios.put(putUrl, {data: {items}})
+    dispatch({ type: UPDATING_STAGE });
+    axios
+      .put(putUrl, { data: { items } })
       .then(({ data }) => {
-        dispatch({ type: 'UPDATED_STAGE', payload: data.items });
-        console.log(data)
+        dispatch({ type: 'UPDATED_STAGE', payload: data });
       })
-      .catch( err => {
+      .catch(err => {
         console.log(err);
-      })
-  }
-}
+      });
+  };
+};

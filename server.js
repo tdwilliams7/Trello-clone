@@ -17,7 +17,8 @@ app.get('/items', (req, res) => {
 // reducers/index line 27
 app.post('/items/post', (req, res) => {
   const item = req.body;
-  items = [...items, { ...item, id }];
+  const newItem = {...item, id};
+  items.push(newItem);
   res.send(items);
   id++;
 })
@@ -25,8 +26,8 @@ app.post('/items/post', (req, res) => {
 // reducers/index line 41
 app.put('/items/put', (req, res) => {
   const newItems = req.body.data;
-  items = newItems;
+  items = newItems.items;
   res.send(items);
-})
+});
 
 app.listen(3333, () => { console.log("listening on port 3333")})
