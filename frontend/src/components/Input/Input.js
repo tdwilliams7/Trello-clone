@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addItem } from '../../store/actions';
 
+// components
+
 class Input extends Component {
   state = {
     state: '',
