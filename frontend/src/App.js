@@ -14,33 +14,19 @@ class App extends Component {
     // id: 0
   }
 
-  deleteItemHandler = ({target}) => {
-    let items = this.state.items.slice(0);
-    const targetId = Number(target.id);
-    const newItems = items.filter(item => {
-      if (item.id !== targetId) {
-        return item;
-      }
-    })
-    this.setState({
-      items: newItems
-    })
-  }
-
-  markCompletedHandler = ({ target }) => {
-    let items = this.state.items.slice(0);
-    const targetId = Number(target.id);
-    const updatedItems = items.map(item => {
-      if (item.id === targetId) {
-        return {...item, stage: 'inProgress'};
-      }
-      return item;
-    })
-    this.setState({
-      items: updatedItems,
-    })
-    console.log(this.state.items)
-  }
+  // deleteItemHandler = ({target}) => {
+  //   let items = this.state.items.slice(0);
+  //   const targetId = Number(target.id);
+  //   const newItems = items.filter(item => {
+  //     if (item.id !== targetId) {
+  //       return item;
+  //     }
+  //     return;
+  //   })
+  //   this.setState({
+  //     items: newItems
+  //   })
+  // }
 
   render() {
     return (

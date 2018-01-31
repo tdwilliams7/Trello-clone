@@ -1,12 +1,32 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getItems } from '../../store/actions';
+
 
 class Completed extends Component {
 
+  componentDidMount() {
+    this.props.getItems();
+  }
+
   render() {
     return (
-      <h1>Completed Component</h1>
+      <div>
+        <h1>Completed Component</h1>
+        {this.props.items.map(item => {
+          if (item.stage === 'completed') {
+            return <div key={item.id}>{item.text}</div>
+          }
+          return;
+        })}
+      </div>
     )
   }
 }
+const mapStateToProps = state => {
+  return {
+    items: state.items,
+  }
+}
 
-export default Completed;
+export default connect(mapStateToProps, { getItems })(Completed);

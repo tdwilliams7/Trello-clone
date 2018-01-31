@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getItems, addItem } from '../../store/actions'
+import { getItems, addItem, changeStage } from '../../store/actions'
 
 class NotStarted extends Component {
   state = {
@@ -23,7 +23,20 @@ class NotStarted extends Component {
     this.props.addItem(newItem);
     this.setState({
       text: '',
-    })
+    });
+  }
+
+  advanceStageHandler = ({ target }) => {
+    const targetId = Number(target.id);
+    let items = this.props.items.slice(0);
+    console.log(targetId);
+    let newItems = items.map(item => {
+      if (item.id === targetId) {
+        return {...item, stage: 'InProgress'}
+      }
+      return item;
+    });
+    this.props.changeStage(newItems);
   }
 
   render() {
@@ -43,7 +56,7 @@ class NotStarted extends Component {
               return (<div key={item.id}>
                 <div>{item.text}</div>
                 <button id={item.id} >Delete</button>
-                <button id={item.id} >In progress</button>
+                <button id={item.id} onClick={this.advanceStageHandler}>In progress</button>
               </div>)
             }
             return;
@@ -60,4 +73,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { getItems, addItem })(NotStarted);
+export default connect(mapStateToProps, { getItems, addItem, changeStage })(NotStarted);
