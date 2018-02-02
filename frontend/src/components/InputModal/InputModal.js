@@ -1,19 +1,67 @@
-import React, { Component } from "react";
+import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import Typography from 'material-ui/Typography';
+import Modal from 'material-ui/Modal';
+import Button from 'material-ui/Button';
+import TextField from 'material-ui/TextField';
+import Dialog, {
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from 'material-ui/Dialog';
+import './InputModal.css';
+
 import { addItem } from '../../store/actions';
 
-class InputModal extends Component {
+function rand() {
+  return Math.round(Math.random() * 20) - 10;
+}
+
+function getModalStyle() {
+  const top = 50 + rand();
+  const left = 50 + rand();
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
+
+const styles = theme => ({
+  paper: {
+    position: 'absolute',
+    width: theme.spacing.unit * 50,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing.unit * 4,
+  },
+});
+
+class InputModal extends React.Component {
   state = {
-    text: "",
-    description: "",
-    assigned: "",
-    owner: "",
-    links: ""
+    open: false,
+      text: "",
+      description: "",
+      assigned: "",
+      owner: "",
+      links: ""
+  };
+
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
   };
 
   inputChangeHandler = ({ target }) => {
     this.setState({
-      [target.name]: target.value
+      [target.name]: target.value,
     });
   };
 
@@ -22,72 +70,89 @@ class InputModal extends Component {
     const newItem = this.state;
     this.props.addItem({...newItem, stage: 'notStarted',});
     this.setState({
-      text: "",
-      description: "",
-      assigned: "",
-      owner: "",
-      links: ""
+        text: "",
+        description: "",
+        assigned: "",
+        owner: "",
+        links: ""
     });
+    this.handleClose();
   };
 
   render() {
+    const { classes } = this.props;
+
     return (
       <div>
-        <h1>Oh Boy, More to do!</h1>
-        <form onSubmit={this.onSubmitHandler}>
-          <div>
-            <input
-              placeholder="title"
-              name="text"
-              onChange={this.inputChangeHandler}
-              value={this.state.text}
-            />
+        <Button onClick={this.handleOpen} className='button'>Open Modal</Button>
+        <Modal
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          open={this.state.open}
+          onClose={this.handleClose}
+        >
+          <div style={getModalStyle()} className={classes.paper}>
+            <DialogContent>
+              <DialogContentText>Oh Boy, More to do!</DialogContentText>
+              <div onSubmit={this.onSubmitHandler}>
+                <div>
+                  <TextField
+                    autofocus
+                    placeholder="title"
+                    name="text"
+                    onChange={this.inputChangeHandler}
+                    value={this.state.text}
+                  />
+                </div>
+                <div>
+                  <TextField
+                    rows="5"
+                    cols="50"
+                    placeholder="Description"
+                    name="description"
+                    onChange={this.inputChangeHandler}
+                    value={this.state.description}
+                  />
+                </div>
+                <div>
+                  <TextField
+                    placeholder="Assigned to:"
+                    name="assigned"
+                    onChange={this.inputChangeHandler}
+                    value={this.state.assigned}
+                  />
+                </div>
+                <div>
+                  <TextField
+                    placeholder="Feature Owner: "
+                    name="owner"
+                    onChange={this.inputChangeHandler}
+                    value={this.state.owner}
+                  />
+                </div>
+                <div>
+                  <TextField
+                    placeholder="supporting links"
+                    name="links"
+                    onChange={this.inputChangeHandler}
+                    value={this.state.links}
+                  />
+                </div>
+                <Button onClick={this.onSubmitHandler}>Add</Button>
+              </div>
+            </DialogContent>
           </div>
-          <div>
-            <textarea
-              rows="5"
-              cols="50"
-              placeholder="Description"
-              name="description"
-              onChange={this.inputChangeHandler}
-              value={this.state.description}
-            />
-          </div>
-          <div>
-            <input
-              placeholder="Assigned to:"
-              name="assigned"
-              onChange={this.inputChangeHandler}
-              value={this.state.assigned}
-            />
-          </div>
-          <div>
-            <input
-              placeholder="Feature Owner: "
-              name="owner"
-              onChange={this.inputChangeHandler}
-              value={this.state.owner}
-            />
-          </div>
-          <div>
-            <input
-              placeholder="supporting links"
-              name="links"
-              onChange={this.inputChangeHandler}
-              value={this.state.links}
-            />
-          </div>
-          <button>Add</button>
-        </form>
+        </Modal>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    state,
-  }
-}
+InputModal.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
-export default connect(mapStateToProps, { addItem })(InputModal);
+// We need an intermediary variable for handling the recursive nesting.
+const InputModalWrapped = withStyles(styles)(InputModal);
+
+export default connect(null, { addItem })(InputModalWrapped);

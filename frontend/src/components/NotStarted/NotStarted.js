@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getItems, addItem, changeStage } from '../../store/actions'
+import { getItems, addItem, changeStage } from '../../store/actions';
+import Grid from 'material-ui/Grid';
+import Button from 'material-ui/Button';
+import Paper from 'material-ui/Paper';
+import './NotStarted.css'
+
 
 class NotStarted extends Component {
   state = {
@@ -14,22 +19,23 @@ class NotStarted extends Component {
 
 
   // actions/index line 41
-  advanceStageHandler = ({ target }) => {
-    const targetId = Number(target.id);
+  advanceStageHandler(id) {
+    const targetId = Number(id);
     let items = this.props.items.slice(0);
-    console.log(targetId);
+
     let newItems = items.map(item => {
       if (item.id === targetId) {
         return {...item, stage: 'InProgress'}
       }
       return item;
     });
+    console.log(newItems)
     this.props.changeStage(newItems);
   }
 
   render() {
     return (
-      <div>
+      <div className="NotStarted">
         <h1>Not Started Component</h1>
 
         <div>
@@ -37,10 +43,9 @@ class NotStarted extends Component {
 
           {this.props.items.map(item => {
             if (item.stage === 'notStarted') {
-              return (<div key={item.id}>
+              return (<div key={item.id} >
                 <div>{item.text}</div>
-                <button id={item.id} >Delete</button>
-                <button id={item.id} onClick={this.advanceStageHandler}>In progress</button>
+                <Button id={item.id} onClick={this.advanceStageHandler.bind(this, item.id)}>In progress</Button>
               </div>)
             }
             return;

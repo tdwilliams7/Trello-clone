@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Grid from 'material-ui/Grid';
 import './App.css';
 
 // Components
@@ -20,9 +21,18 @@ class App extends Component {
           <h1 className="App-title">Trello Clone</h1>
           <Input />
         </header>
-        <NotStarted />
-        <InProgress />
-        <Completed />
+        <Grid container spacing={0}>
+          <Grid item md={4} lg={4}>
+            <NotStarted />
+          </Grid>
+          <Grid item md={4} lg={4}>
+            <InProgress />
+          </Grid>
+          <Grid item md={4} lg={4}>
+            <Completed />
+          </Grid>
+        </Grid>
+
       </div>
     );
   }

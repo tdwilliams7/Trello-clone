@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getItems, changeStage } from '../../store/actions';
 
+import './InProgress.css'
+
 
 class InProgress extends Component {
 
@@ -24,7 +26,7 @@ class InProgress extends Component {
 
   render() {
     return (
-      <div>
+      <div className='InProgress'>
         <h1>In Progress Component</h1>
         {this.props.items.map(item => {
           if (item.stage === 'InProgress') {

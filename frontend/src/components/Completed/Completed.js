@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getItems } from "../../store/actions";
+import './Completed.css';
 
 class Completed extends Component {
   // actions/index line 17
@@ -9,7 +10,7 @@ class Completed extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="Completed">
         <h1>Completed Component</h1>
         {this.props.items.map(item => {
           if (item.stage === "completed") {
