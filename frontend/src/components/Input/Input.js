@@ -8,7 +8,7 @@ class Input extends Component {
 
   render() {
     return (
-      <div class="input">
+      <div className="Input">
         <h1>Input Component</h1>
         <InputModal />
       </div>

@@ -17,7 +17,7 @@ class Completed extends Component {
         {this.props.items.map(item => {
           if (item.stage === "completed") {
             // return <div key={item.id}>{item.text}</div>;
-            return <ListCard item={item} />
+            return <ListCard item={item}/>
           }
           return;
         })}

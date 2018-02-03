@@ -1,3 +1,6 @@
 .ListCard {
   margin: 10%;
 }
+.ListCard .title {
+  color: white;
+}

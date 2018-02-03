@@ -85,7 +85,7 @@ class InputModal extends React.Component {
     return (
       <div>
         <Button onClick={this.handleOpen} className="button">
-          Open Modal
+          +
         </Button>
         <Modal
           aria-labelledby="simple-modal-title"
