@@ -15,10 +15,10 @@ const ListCard = (props) => {
             {props.item.text}
           </Typography>
         </CardContent>
-        <CardActions>
-          <Button size="small" onClick={() => props.advanceStageHandler(props.item.id)}>
-            Learn More
-          </Button>
+        <CardActions className="actions" >
+            <Button size="small" onClick={() => props.advanceStageHandler(props.item.id)}>
+              =>
+            </Button>
         </CardActions>
       </Card>
     </div>

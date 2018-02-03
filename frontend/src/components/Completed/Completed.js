@@ -10,6 +10,11 @@ class Completed extends Component {
   componentDidMount() {
     this.props.getItems();
   }
+
+  advanceStageHandler = id => {
+    console.log(id)
+  }
+  
   render() {
     return (
       <div className="Completed">
@@ -17,7 +22,7 @@ class Completed extends Component {
         {this.props.items.map(item => {
           if (item.stage === "completed") {
             // return <div key={item.id}>{item.text}</div>;
-            return <ListCard item={item}/>
+            return <ListCard item={item} advanceStageHandler={this.advanceStageHandler}/>
           }
           return;
         })}

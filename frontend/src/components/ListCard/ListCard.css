@@ -4,3 +4,10 @@
 .ListCard .title {
   color: white;
 }
+.ListCard .actions {
+  display: flex;
+  justify-content: flex-end;
+}
+.ListCard .actions button {
+  color: white;
+}
