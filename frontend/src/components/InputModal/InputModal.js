@@ -1,20 +1,20 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
-import Modal from 'material-ui/Modal';
-import Button from 'material-ui/Button';
-import TextField from 'material-ui/TextField';
+import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { withStyles } from "material-ui/styles";
+import Typography from "material-ui/Typography";
+import Modal from "material-ui/Modal";
+import Button from "material-ui/Button";
+import TextField from "material-ui/TextField";
 import Dialog, {
   DialogActions,
   DialogContent,
   DialogContentText,
-  DialogTitle,
-} from 'material-ui/Dialog';
-import './InputModal.css';
+  DialogTitle
+} from "material-ui/Dialog";
+import "./InputModal.css";
 
-import { addItem } from '../../store/actions';
+import { addItem } from "../../store/actions";
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -27,28 +27,28 @@ function getModalStyle() {
   return {
     top: `${top}%`,
     left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
+    transform: `translate(-${top}%, -${left}%)`
   };
 }
 
 const styles = theme => ({
   paper: {
-    position: 'absolute',
+    position: "absolute",
     width: theme.spacing.unit * 50,
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
-    padding: theme.spacing.unit * 4,
-  },
+    padding: theme.spacing.unit * 4
+  }
 });
 
 class InputModal extends React.Component {
   state = {
     open: false,
-      text: "",
-      description: "",
-      assigned: "",
-      owner: "",
-      links: ""
+    text: "",
+    description: "",
+    assigned: "",
+    owner: "",
+    links: ""
   };
 
   handleOpen = () => {
@@ -61,20 +61,20 @@ class InputModal extends React.Component {
 
   inputChangeHandler = ({ target }) => {
     this.setState({
-      [target.name]: target.value,
+      [target.name]: target.value
     });
   };
 
   onSubmitHandler = event => {
     event.preventDefault();
     const newItem = this.state;
-    this.props.addItem({...newItem, stage: 'notStarted',});
+    this.props.addItem({ ...newItem, stage: "notStarted" });
     this.setState({
-        text: "",
-        description: "",
-        assigned: "",
-        owner: "",
-        links: ""
+      text: "",
+      description: "",
+      assigned: "",
+      owner: "",
+      links: ""
     });
     this.handleClose();
   };
@@ -84,7 +84,9 @@ class InputModal extends React.Component {
 
     return (
       <div>
-        <Button onClick={this.handleOpen} className='button'>Open Modal</Button>
+        <Button onClick={this.handleOpen} className="button">
+          Open Modal
+        </Button>
         <Modal
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
@@ -149,7 +151,7 @@ class InputModal extends React.Component {
 }
 
 InputModal.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 // We need an intermediary variable for handling the recursive nesting.

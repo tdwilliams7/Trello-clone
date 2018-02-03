@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getItems, changeStage } from '../../store/actions';
+import ListCard from '../ListCard/ListCard';
 
 import './InProgress.css'
 
@@ -12,8 +13,8 @@ class InProgress extends Component {
     this.props.getItems();
   }
 
-  advanceStageHandler = ({ target }) => {
-    const targetId = Number(target.id);
+  advanceStageHandler = id => {
+    const targetId = Number(id);
     let items = this.props.items.slice(0);
     let newItems = items.map(item => {
       if (item.id === targetId) {
@@ -30,10 +31,14 @@ class InProgress extends Component {
         <h1>In Progress Component</h1>
         {this.props.items.map(item => {
           if (item.stage === 'InProgress') {
-            return <div key={item.id}>
-              {item.text}
-              <button id={item.id} onClick={this.advanceStageHandler}>Completed</button>
-              </div>
+            return (
+              <ListCard item={item} advanceStageHandler={this.advanceStageHandler} />
+            )
+            // <div key={item.id}>
+            //   {item.text}
+            //   <button id={item.id} onClick={this.advanceStageHandler}>Completed</button>
+            //   </div>
+
           }
           return;
         })}

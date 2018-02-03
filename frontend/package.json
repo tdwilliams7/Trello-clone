@@ -6,6 +6,8 @@
     "axios": "^0.17.1",
     "material-ui": "^1.0.0-beta.31",
     "material-ui-icons": "^1.0.0-beta.17",
+    "mdbreact": "^4.1.0",
+    "node-less-chokidar": "^0.1.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
@@ -15,9 +17,17 @@
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "npm run build-css && run-p -ncr watch-css start-js",
+    "start-js": "react-scripts start",
+    "build": "run-s -n build-css build-js",
+    "build-js": "react-scripts build",
+    "test": "run-s -n build-css test-js",
+    "test-js": "react-scripts test --env=jsdom",
+    "build-css": "node-less-chokidar src",
+    "watch-css": "node-less-chokidar src --watch"
+  },
+  "devDependencies": {
+    "node-less-chokidar": "^0.1.0",
+    "npm-run-all": "^4.0.2"
   }
 }

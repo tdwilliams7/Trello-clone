@@ -1,4 +1,3 @@
-.Completed {
-  background: #3E3175;
-  min-height: 60vh;
+.Completed .ListCard p {
+  color: #3E3175;
 }

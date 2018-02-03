@@ -21,7 +21,7 @@ class App extends Component {
           <h1 className="App-title">Trello Clone</h1>
           <Input />
         </header>
-        <Grid container spacing={0}>
+        <Grid container spacing={24}>
           <Grid item md={4} lg={4}>
             <NotStarted />
           </Grid>

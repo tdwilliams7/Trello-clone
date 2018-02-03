@@ -1,4 +1,6 @@
-.NotStarted {
+.NotStarted .ListCard {
   background: #AA8239;
-  min-height: 60vh;
+}
+.NotStarted .ListCard p {
+  color: #AA8239;
 }
