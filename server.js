@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-let items = [{ text: 'Clean Bathroom', stage: 'notStarted', id: 99 }, { text: 'Dust', stage: 'InProgress', id: 98 }, { text: 'Post Office', stage: 'InProgress', id: 94 }, { text: 'Make a Billion Dollars', stage: 'completed', id: 100 }];
+let items = [{ text: 'Clean Bathroom', stage: 'notStarted', id: 99 }, { text: 'Dust', stage: 'InProgress', id: 98 }, { text: 'Post Office', stage: 'InProgress', id: 94 }, { text: 'Make a Billion Dollars (just kiding)', stage: 'completed', id: 100 }];
 let id = 0;
 
 app.use(bodyParser.json())
