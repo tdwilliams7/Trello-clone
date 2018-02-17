@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { getSingleItem } from "../../store/actions";
 
 import Checklist from "../Checklist/Checklist";
+// for commit
 
 class CardPage extends PureComponent {
   componentDidMount() {
