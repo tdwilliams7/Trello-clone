@@ -2,23 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
-import Typography from "material-ui/Typography";
 import Modal from "material-ui/Modal";
 import Button from "material-ui/Button";
 import TextField from "material-ui/TextField";
-import Dialog, {
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle
-} from "material-ui/Dialog";
+import { DialogContent, DialogContentText } from "material-ui/Dialog";
 import "./InputModal.css";
 
 import { addItem } from "../../store/actions";
-
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
 
 function getModalStyle() {
   const top = 50;
@@ -48,7 +38,8 @@ class InputModal extends React.Component {
     description: "",
     assigned: "",
     owner: "",
-    links: ""
+    links: "",
+    checklist: []
   };
 
   handleOpen = () => {
@@ -74,7 +65,8 @@ class InputModal extends React.Component {
       description: "",
       assigned: "",
       owner: "",
-      links: ""
+      links: "",
+      checklist: []
     });
     this.handleClose();
   };

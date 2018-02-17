@@ -11,6 +11,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.0",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
@@ -27,7 +28,6 @@
     "watch-css": "node-less-chokidar src --watch"
   },
   "devDependencies": {
-    "node-less-chokidar": "^0.1.0",
     "npm-run-all": "^4.0.2"
   }
 }

@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getItems, addItem, changeStage } from "../../store/actions";
-import Grid from "material-ui/Grid";
-import Button from "material-ui/Button";
-import Paper from "material-ui/Paper";
 import "./NotStarted.css";
 
-import ListCard from '../ListCard/ListCard';
+import ListCard from "../ListCard/ListCard";
 
 class NotStarted extends Component {
   // actions/index line 17
@@ -36,7 +33,10 @@ class NotStarted extends Component {
           {this.props.items.map(item => {
             if (item.stage === "notStarted") {
               return (
-                <ListCard item={item} advanceStageHandler={this.advanceStageHandler} />
+                <ListCard
+                  item={item}
+                  advanceStageHandler={this.advanceStageHandler}
+                />
               );
             }
             return;
